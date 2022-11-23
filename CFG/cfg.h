@@ -36,7 +36,7 @@ std::unordered_multimap<std::string, PharaseStructure> lexical_rule =
     {"pen", PharaseStructure::N},
     {"is", PharaseStructure::VI},
     {"are", PharaseStructure::VI},
-    {"road", PharaseStructure::VI},
+    {"read", PharaseStructure::VI},
 };
 
 std::map<std::pair<PharaseStructure, PharaseStructure>, PharaseStructure> phrase_structure_rule =
@@ -53,5 +53,8 @@ struct Node
     Node* left = nullptr;
     Node* right = nullptr;
     PharaseStructure pharase_structure = PharaseStructure::DEFAULT;
+    const char* s;
+    Node(){}
+    Node(const char* _s) :s{ _s } {}
 };
 #endif //!CFG_CFG_H

@@ -6,15 +6,24 @@
 #include <string>
 #include <algorithm>
 
-void search(const Node& node) {
-    if (node.left == nullptr && node.right == nullptr) {
-        std::cout << pharase_structure_to_string[(int)node.pharase_structure] << std::endl;
+void search(const Node* node) {
+    if (node->left == nullptr && node->right == nullptr) {
+        std::cout << "(" << pharase_structure_to_string[(int)node->pharase_structure] << " " << node->s << ")";
         return;
     }
-    if (node.left != nullptr)
-        search(*node.left);
-    if (node.right != nullptr)
-        search(*node.right);
+
+    std::cout << "(" << pharase_structure_to_string[(int)node->pharase_structure];
+
+    if (node->left != nullptr) {
+        search(node->left);
+        std::cout << " ";
+        search(node->right);
+
+    }
+    else {
+        search(node->right);
+    }
+    std::cout << ")";
 }
 
 int main() {
@@ -22,6 +31,7 @@ int main() {
     //std::string input = "This is an apple";
     //std::string input = "You read a book";
     std::string input = "It is the red pen";
+    std::cout << input << std::endl;
     std::istringstream iss(input);
     std::string s;
     std::vector<std::string> tmp_s;
@@ -38,12 +48,15 @@ int main() {
         std::pair<std::unordered_multimap<std::string, PharaseStructure>::iterator, std::unordered_multimap<std::string, PharaseStructure>::iterator> range = lexical_rule.equal_range(tmp_s[i]);
         for (std::unordered_multimap<std::string, PharaseStructure>::iterator iterator = range.first; iterator != range.second; iterator++) {
             std::pair<std::string, PharaseStructure> target = *iterator;
-            Node new_node;
+            Node new_node(tmp_s[i].c_str());
+            new_node.s;
             new_node.pharase_structure = target.second;
             table[i][i].push_back(new_node);
             if (target.second == PharaseStructure::N || target.second == PharaseStructure::PRON) {
-                new_node.pharase_structure = PharaseStructure::NP;
-                table[i][i].push_back(new_node);
+                Node tmp_node;
+                tmp_node.pharase_structure = PharaseStructure::NP;
+                table[i][i].insert(table[i][i].begin(), tmp_node);
+                table[i][i][0].right = &table[i][i].back();
             }
         }
     }
@@ -67,7 +80,7 @@ int main() {
         }
     }
     for (auto& result : table[0][n - 1]) {
-        search(result);
+        search(&result);
     std::cout << std::endl;
     }
 }
