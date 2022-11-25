@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <string>
 #include <algorithm>
 
 void search(const Node* node) {
