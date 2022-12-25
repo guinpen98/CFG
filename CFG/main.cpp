@@ -1,4 +1,4 @@
-#include "cfg.h"
+﻿#include "cfg.h"
 #include <sstream>
 #include <string>
 #include <vector>

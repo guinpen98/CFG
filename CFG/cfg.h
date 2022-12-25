@@ -1,4 +1,4 @@
-#ifndef CFG_CFG_H
+﻿#ifndef CFG_CFG_H
 #define CFG_CFG_H
 #include <unordered_map>
 #include <map>
