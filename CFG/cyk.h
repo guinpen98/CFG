@@ -1,5 +1,5 @@
-#ifndef CFG_CYK_H
-#define CFG_CYK_H
+#ifndef PARSER_CYK_H
+#define PARSER_CYK_H
 #include <unordered_map>
 #include <map>
 #include<array>
@@ -120,4 +120,4 @@ void cyk(std::vector<std::vector<std::vector<Node>>>& table, const int n, const 
     }
 }
 
-#endif //!CFG_CFG_H
+#endif //!PARSER_CYK_H
