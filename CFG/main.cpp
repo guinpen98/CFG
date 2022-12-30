@@ -1,4 +1,5 @@
 ﻿#include "cyk.h"
+#include "cfg.h"
 #include <sstream>
 #include <string>
 #include <vector>
@@ -28,4 +29,10 @@ int main() {
         search(&result);
         std::cout << std::endl;
     }
+
+    std::vector<std::vector<std::string>> dic = genDic();
+
+    std::string in = "私 は 起きた";
+    std::string out = parse(in, dic);
+    std::cout << out << std::endl;
 }
