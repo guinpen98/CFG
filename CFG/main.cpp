@@ -32,7 +32,7 @@ int main() {
 
     std::vector<std::vector<std::string>> dic = genDic();
 
-    std::string in = "私 は 起きた";
+    std::string in = "美しい 大きい 花 が 咲いた";
     std::string out = parse(in, dic);
     std::cout << out << std::endl;
 }

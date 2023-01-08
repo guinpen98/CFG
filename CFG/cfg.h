@@ -95,6 +95,9 @@ std::string isAP(const std::vector<std::string>& input, const std::vector<std::v
     output = check(input, isAdv, isAP, 1, "AP", dic);
     if (!output.empty()) return output;
 
+    output = check(input, isAP, isAP, 1, "AP", dic);
+    if (!output.empty()) return output;
+
     return std::string();
 }
 std::string isN(const std::vector<std::string>& input, const std::vector<std::vector<std::string>>& dic) {
